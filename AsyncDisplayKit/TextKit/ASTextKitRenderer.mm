@@ -230,6 +230,9 @@ static NSCharacterSet *_defaultAvoidTruncationCharacterSet()
       
       LOG(@"usedRect: %@", NSStringFromCGRect([layoutManager usedRectForTextContainer:textContainer]));
 
+      // Hack to get missing line rendered
+      textContainer.size = CGSizeMake(textContainer.size.width, textContainer.size.height + 100);
+      
       NSRange glyphRange = [layoutManager glyphRangeForBoundingRect:CGRectMake(0,0,textContainer.size.width, textContainer.size.height) inTextContainer:textContainer];
       LOG(@"boundingRect: %@", NSStringFromCGRect([layoutManager boundingRectForGlyphRange:glyphRange inTextContainer:textContainer]));
       
