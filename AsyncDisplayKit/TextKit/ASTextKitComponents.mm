@@ -69,8 +69,8 @@
 }
 
 - (CGSize)sizeForConstrainedWidth:(CGFloat)constrainedWidth
-              forMaxNumberOfLines:(NSInteger)maxNumberOfLines {
-  
+              forMaxNumberOfLines:(NSInteger)maxNumberOfLines
+{
   if (maxNumberOfLines == 0) {
     return [self sizeForConstrainedWidth:constrainedWidth];
   }
@@ -96,7 +96,6 @@
   glyphRange = [components.layoutManager glyphRangeForTextContainer:components.textContainer];
   
   while (lineRange.location < NSMaxRange(glyphRange)) {
-    
     rect = [components.layoutManager lineFragmentRectForGlyphAtIndex:lineRange.location
                                                       effectiveRange:&lineRange];
     
@@ -110,7 +109,6 @@
     
     lastOriginY = CGRectGetMinY(rect);
     lineRange.location = NSMaxRange(lineRange);
-    
   }
   
   CGFloat fragmentHeight = rect.origin.y + rect.size.height;
